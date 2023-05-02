@@ -1,19 +1,19 @@
 class Navigator {
-    fun print(myMap: MutableMap<Int, String>) {
+    fun print(myList: MutableList<String>) {
         println("0. Создать")
-        for (i in myMap) {
-            println("${i.key}. ${i.value}")
+        for (i in myList) {
+            println("$i")
         }
-        println("${myMap.size + 1}. Выход")
+        println("${myList.size + 1}. Выход")
     }
 
     var lastFilteredSize: Int = 1
     var lastfilteredList: MutableList<String> = mutableListOf()
     fun filterPrint(filteredKey: Int, myList: MutableList<String>) {
-        val filteredList = myList.filter { it.substringBefore(".") == filteredKey.toString()}
+        val filteredList = myList.filter { it.substringBefore(".") == filteredKey.toString() }
         var currentPos = 1
         println("0. создать")
-        for(i in filteredList){
+        for (i in filteredList) {
             println("$currentPos.${i.substringAfter(".").take(10)}...")
             currentPos++
         }
@@ -22,7 +22,7 @@ class Navigator {
         lastfilteredList = filteredList.toMutableList()
     }
 
-    fun giveName(): String{
+    fun giveName(): String {
         println("Введите название")
         var inputName = readLine().toString()
         if (inputName == "") {
@@ -30,7 +30,8 @@ class Navigator {
         }
         return inputName
     }
-    fun showFullText(number: Int){
+
+    fun showFullText(number: Int) {
         val fullText: String = lastfilteredList[number - 1].substringAfter(".")
         println("\n${fullText}\n")
     }
